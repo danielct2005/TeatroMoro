@@ -3,10 +3,13 @@ package cl.teatromoro.gestionentradas.clasesbasicas;
 /**
  * Clase que representa una Tarifa (Estudiante, Público General o Tercera Edad).
  *
- * Abstracción aplicada:
- * - Abstracción de datos: objeto Tarifa encapsula tipo y edad.
- * - Encapsulación: atributos privados con getter.
- * - Algoritmo de selección múltiple: switch para calcular precio.
+ * Variables de instancia:
+ * - tipoTarifa: "estudiante" o "general".
+ * - edad: edad del comprador.
+ *
+ * Métodos:
+ * - obtenerPrecio: calcula el precio base según el tipo de entrada,
+ *   aplicando descuentos si corresponde.
  */
 public class Tarifa {
 
@@ -19,12 +22,20 @@ public class Tarifa {
         this.edad = edad;
     }
 
-    // Getter
+    // Getters
     public String getTipoTarifa() {
         return tipoTarifa;
     }
 
-    // --- Método que calcula precio con descuentos ---
+    public int getEdad() {
+        return edad;
+    }
+
+    /**
+     * Calcula el precio final según tipo de entrada y descuentos.
+     * @param tipoEntrada tipo de entrada (VIP, platea, etc.)
+     * @return precio final con descuentos aplicados
+     */
     public int obtenerPrecio(String tipoEntrada) {
         int precioBase = switch (tipoEntrada.toLowerCase()) {
             case "vip" -> 35000;
