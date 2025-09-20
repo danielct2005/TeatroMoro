@@ -1,40 +1,40 @@
 package cl.teatromoro.gestionentradas.clasesbasicas;
 
 /**
- * Clase que representa una Entrada de Teatro.
- *
- * Variables estáticas:
- * - contadorEntradas: genera IDs únicos para cada entrada.
- *
- * Variables de instancia:
- * - numeroEntrada: identificador único.
- * - tipoEntrada: tipo seleccionado por el usuario (VIP, Platea, etc.).
- * - zona: zona A, B o C del teatro.
- * - tarifa: objeto Tarifa asociado.
- * - precio: precio calculado con descuentos.
+ * Clase que representa una entrada comprada.
+ * Contiene número de asiento, precio y estado.
  */
 public class Entrada {
-    private static int contadorEntradas = 1; // variable estática para IDs
-
-    private int numeroEntrada;
-    private String tipoEntrada;
-    private String zona;
-    private Tarifa tarifa;
+    private int numero;
     private int precio;
+    private String estado;
 
-    // Constructor
-    public Entrada(String tipoEntrada, Tarifa tarifa, String zona) {
-        this.numeroEntrada = contadorEntradas++;
-        this.tipoEntrada = tipoEntrada;
-        this.tarifa = tarifa;
-        this.zona = zona;
-        this.precio = tarifa.obtenerPrecio(tipoEntrada);
+    public Entrada(int numero, int precio, String estado) {
+        this.numero = numero;
+        this.precio = precio;
+        this.estado = estado;
     }
 
-    // Getters
-    public int getNumeroEntrada() { return numeroEntrada; }
-    public String getTipoEntrada() { return tipoEntrada; }
-    public String getZona() { return zona; }
-    public Tarifa getTarifa() { return tarifa; }
-    public int getPrecio() { return precio; }
+    public int getNumero() {
+        return numero;
+    }
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    /**
+     * Imprime la boleta de esta entrada
+     */
+    public void imprimirBoleta() {
+        System.out.println("Asiento: " + numero + " | Estado: " + estado + " | Precio: $" + precio);
+    }
 }
